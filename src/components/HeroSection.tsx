@@ -61,7 +61,7 @@ const HeroSection = () => {
               
               <div className="relative h-full w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-glass shadow-2xl">
                 <img 
-                  src="./profile-pic.jpg" 
+                  src="./profile-pic.jpeg" 
                   alt="Abhishek Patel" 
                   className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                 />
