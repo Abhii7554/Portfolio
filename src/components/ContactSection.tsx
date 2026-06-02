@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-10%" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [focused, setFocused] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,9 +66,9 @@ const ContactSection = () => {
 
       <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <p className="text-sm font-mono text-primary tracking-widest uppercase mb-3">Get In Touch</p>

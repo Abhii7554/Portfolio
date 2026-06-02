@@ -31,15 +31,15 @@ const categories = [
 
 const SkillsSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="mb-16 flex flex-col items-center text-center"
         >
           <p className="text-sm font-mono text-primary tracking-widest uppercase mb-3 px-4 py-1 rounded-full bg-primary/10 border border-primary/20">

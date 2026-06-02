@@ -49,9 +49,9 @@ const HeroSection = () => {
           
           {/* Profile Picture Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative group justify-self-center lg:justify-self-start"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
@@ -83,9 +83,9 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="text-center lg:text-left space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
             >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-widest uppercase mb-4">
                 📍 Gandhinagar, Gujarat
@@ -103,9 +103,9 @@ const HeroSection = () => {
 
             {/* Currently Card - Replaces Typewriter */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
               className="relative h-20 flex items-center justify-center lg:justify-start"
             >
               <div className="glass-card px-6 py-4 flex items-center gap-4 min-w-[280px] border-primary/20 shadow-lg group hover:border-primary/40 transition-colors">
@@ -141,18 +141,18 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
               className="text-lg text-muted-foreground max-w-xl leading-relaxed handwritten"
             >
               Currently learning, building, and occasionally debugging things that worked perfectly five minutes ago.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
               className="flex flex-wrap gap-4 justify-center lg:justify-start"
             >
               <button onClick={() => scrollTo("#projects")} className="btn-neon group">

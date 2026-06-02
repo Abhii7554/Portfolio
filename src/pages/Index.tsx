@@ -10,59 +10,77 @@ import JourneySection from "@/components/JourneySection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-const Loader = () => (
-  <motion.div
-    className="fixed inset-0 z-[200] flex items-center justify-center bg-background"
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.6 }}
-  >
+const Loader = () => {
+  return (
     <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="text-center"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#030303]"
     >
-      <div className="text-4xl font-bold font-mono neon-text mb-4">{"<Dev />"}</div>
-      <div className="w-48 h-1 rounded-full overflow-hidden bg-muted mx-auto">
-        <motion.div
-          className="h-full rounded-full"
-          style={{ background: "var(--gradient-neon)" }}
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-        />
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center"
+      >
+        <div className="flex items-center justify-center gap-1">
+          <span className="text-xl md:text-2xl font-medium tracking-tight text-foreground/80 handwritten italic">
+            Initializing curiosity
+          </span>
+          <motion.span
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{ repeat: Infinity, duration: 0.8, ease: "steps(2)" }}
+            className="w-1.5 h-6 bg-primary rounded-full mt-1"
+          />
+        </div>
+        
+        <div className="mt-6 w-32 h-[1px] bg-white/5 mx-auto relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0 bg-primary/40"
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+      </motion.div>
     </motion.div>
-  </motion.div>
-);
+  );
+};
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1800);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      
-      <AnimatePresence>{loading && <Loader />}</AnimatePresence>
+    <div className="relative min-h-screen bg-[#030303]">
+      <AnimatePresence mode="wait">
+        {loading && <Loader key="loader" />}
+      </AnimatePresence>
 
-      {!loading && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-          <ScrollProgress />
-          <Navbar />
-          <HeroSection />
-          <AboutSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <JourneySection />
-          <ContactSection />
-          <Footer />
-        </motion.div>
-      )}
-    </>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="relative z-10"
+      >
+        <ScrollProgress />
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <JourneySection />
+        <ContactSection />
+        <Footer />
+      </motion.div>
+    </div>
   );
 };
 

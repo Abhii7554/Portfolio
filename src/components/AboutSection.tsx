@@ -4,7 +4,7 @@ import { Quote, Sparkles, Pencil, BookOpen, Coffee } from "lucide-react";
 
 const AboutSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
     <section id="about" className="section-padding relative overflow-hidden">
@@ -14,9 +14,9 @@ const AboutSection = () => {
       
       <div className="max-w-6xl mx-auto relative z-10" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <p className="text-sm font-mono text-primary tracking-widest uppercase mb-3 flex items-center justify-center gap-2">

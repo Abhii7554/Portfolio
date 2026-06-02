@@ -87,7 +87,7 @@ const filters: { label: string; value: Category }[] = [
 const ProjectsSection = () => {
   const [active, setActive] = useState<Category>("all");
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-10%" });
 
   const filtered = active === "all" ? projects : projects.filter((p) => p.category === active);
 
@@ -95,9 +95,9 @@ const ProjectsSection = () => {
     <section id="projects" className="section-padding relative">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="mb-12"
         >
           <p className="text-sm font-mono text-primary tracking-widest uppercase mb-3">My Work</p>
