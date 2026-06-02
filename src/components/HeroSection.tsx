@@ -88,7 +88,7 @@ const HeroSection = () => {
               transition={{ delay: 0.2 }}
             >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-widest uppercase mb-4">
-                Full Stack & Data Science
+                📍 Gandhinagar, Gujarat
               </span>
               <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
                 Hi, I'm <br />
@@ -146,7 +146,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="text-lg text-muted-foreground max-w-xl leading-relaxed handwritten"
             >
-              Building modern web experiences with clean code and a creative soul. Let's build something meaningful.
+              Currently learning, building, and occasionally debugging things that worked perfectly five minutes ago.
             </motion.p>
 
             <motion.div
@@ -157,7 +157,7 @@ const HeroSection = () => {
             >
               <button onClick={() => scrollTo("#projects")} className="btn-neon group">
                 <span className="flex items-center gap-2">
-                  View My Work <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
+                  See What I've Built <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
                 </span>
               </button>
               <button 
