@@ -127,9 +127,9 @@ const ProjectsSection = () => {
             <motion.div
               key={p.title}
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
               className="glass-card-hover group overflow-hidden"
             >
@@ -138,7 +138,8 @@ const ProjectsSection = () => {
                   <img
                     src={p.image}
                     alt={p.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
                   />
                 ) : (
                   <span className="text-4xl font-black text-foreground/5 select-none group-hover:scale-110 transition-transform duration-500">

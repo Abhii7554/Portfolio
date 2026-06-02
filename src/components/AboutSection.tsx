@@ -67,13 +67,14 @@ const AboutSection = () => {
           {/* Floating elements / Fun facts */}
           <div className="lg:col-span-2 space-y-6">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="glass-card p-6 border-primary/10 hover:border-primary/30 transition-all animate-float-slow"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="glass-card p-6 border-primary/10 hover:border-primary/30 transition-all"
             >
               <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> 
+                <span className="w-2 h-2 rounded-full bg-primary" /> 
                 Personal Philosophy
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -82,14 +83,14 @@ const AboutSection = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="glass-card p-6 border-secondary/10 hover:border-secondary/30 transition-all animate-float-slow"
-              style={{ animationDelay: "1s" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="glass-card p-6 border-secondary/10 hover:border-secondary/30 transition-all"
             >
               <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" /> 
+                <span className="w-2 h-2 rounded-full bg-secondary" /> 
                 Beyond the Screen
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">

@@ -109,12 +109,13 @@ const JourneySection = () => {
         {/* Developer Note - Human Touch */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 1, duration: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 1 }}
           className="mt-24 text-center p-8 border-t border-white/5"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-glass border border-white/10 shadow-xl animate-float-slow">
-            <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-glass border border-white/10 shadow-xl">
+            <span className="w-3 h-3 rounded-full bg-green-500" />
             <p className="text-sm font-medium italic handwritten text-foreground/80">
               Personal Note: I believe the best code is written with curiosity and a bit of caffeine.
             </p>

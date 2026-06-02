@@ -13,9 +13,10 @@ const HeroSection = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    // Rotating card interval
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % currentlyItems.length);
-    }, 3000);
+    }, 4000); // Slower interval for less CPU churn
     return () => clearInterval(timer);
   }, []);
 
@@ -40,42 +41,39 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Orbs with more personality */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-[120px] animate-pulse delay-700" />
+      {/* Reduced background complexity for performance */}
+      <div className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-primary/5 blur-[100px]" />
+      <div className="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full bg-secondary/5 blur-[100px]" />
       
       <div className="relative z-10 flex flex-col items-center px-6 max-w-5xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
           {/* Profile Picture Card */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="relative group justify-self-center lg:justify-self-start"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-              {/* Animated rings */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary via-secondary to-primary animate-spin-slow opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary via-secondary to-primary opacity-30 group-hover:opacity-100 transition-opacity blur-sm" />
+              {/* Static rings instead of animate-spin for mobile performance */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary via-secondary to-primary opacity-20 blur-sm" />
               
               <div className="relative h-full w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-glass shadow-2xl">
                 <img 
                   src="./profile-pic.jpeg" 
                   alt="Abhishek Patel" 
-                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="eager"
+                  fetchPriority="high"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                 
                 {/* Floating badge */}
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 3 }}
-                  className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 flex items-center gap-2"
-                >
+                <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 flex items-center gap-2">
                   <Sparkles size={14} className="text-yellow-400" />
                   <span className="text-xs font-semibold tracking-wide uppercase">Open to Work</span>
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

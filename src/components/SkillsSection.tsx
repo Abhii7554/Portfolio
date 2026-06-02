@@ -91,14 +91,15 @@ const SkillsSection = () => {
 
         {/* Currently Exploring Mini Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1, duration: 0.6 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-16 p-8 glass-card border-dashed border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="space-y-1 text-center md:text-left">
             <h4 className="text-lg font-bold flex items-center gap-2 justify-center md:justify-start">
-              <Compass className="text-secondary animate-spin-slow" size={20} /> 
+              <Compass className="text-secondary" size={20} /> 
               Currently Exploring
             </h4>
             <p className="text-sm text-muted-foreground italic">What's brewing in my lab right now...</p>
