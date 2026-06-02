@@ -167,6 +167,56 @@
     @apply px-6 py-24 md:px-12 lg:px-24 xl:px-32;
   }
 
+  .handwritten {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+
+  .creative-card {
+    @apply glass-card relative overflow-hidden p-8 transition-all duration-500;
+  }
+
+  .creative-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(var(--primary), 0.06),
+      transparent 40%
+    );
+  }
+
+  .creative-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  .noise-bg {
+    position: relative;
+  }
+
+  .noise-bg::after {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 50;
+  }
+
   .skill-bar {
     @apply h-2 rounded-full overflow-hidden;
     background: hsl(var(--muted));

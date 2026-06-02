@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 
 const links = [
   { label: "About", href: "#about" },
@@ -106,10 +106,10 @@ const Navbar = () => {
           ))}
           <button 
             type="button"
-            onClick={() => scrollTo("#contact")} 
-            className="btn-neon text-sm py-2 px-5 cursor-pointer"
+            onClick={() => window.open("./resume.pdf", "_blank")} 
+            className="btn-neon text-sm py-2 px-5 cursor-pointer flex items-center gap-2"
           >
-            Hire Me
+            <FileText size={16} /> Resume
           </button>
         </div>
 
@@ -149,10 +149,13 @@ const Navbar = () => {
               ))}
               <button 
                 type="button"
-                onClick={() => scrollTo("#contact")} 
-                className="btn-neon text-sm py-3 px-6 w-full cursor-pointer"
+                onClick={() => {
+                  setOpen(false);
+                  window.open("./resume.pdf", "_blank");
+                }} 
+                className="btn-neon text-sm py-3 px-6 w-full cursor-pointer flex items-center justify-center gap-2"
               >
-                Hire Me
+                <FileText size={18} /> Resume
               </button>
             </div>
           </motion.div>
