@@ -37,10 +37,30 @@ const Navbar = () => {
   }, []);
 
   const scrollTo = (href: string) => {
-    setOpen(false);
-    const id = href.replace("#", "");
+    console.log(`[NAVBAR] Mobile link tapped: ${href}`);
+    console.log(`[DEBUG] scrollTo entered with href: ${href}`);
     
+    const id = href.replace("#", "");
     const element = document.getElementById(id);
+    console.log(`[DEBUG] ID extracted: ${id}, element lookup: ${element ? 'FOUND' : 'NOT FOUND'}`);
+    console.log(`[DEBUG] window.scrollY before scroll: ${window.scrollY}`);
+
+    const performScroll = (offsetPosition: number) => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      console.log(`[DEBUG] window.scrollY after scroll (immediate): ${window.scrollY}`);
+
+      setTimeout(() => {
+        console.log(`[DEBUG] window.scrollY after 300ms: ${window.scrollY}`);
+      }, 300);
+
+      setTimeout(() => {
+        console.log(`[DEBUG] window.scrollY after 1000ms: ${window.scrollY}`);
+      }, 1000);
+    };
+
     if (element) {
       const offset = 80; // Navbar height offset
       const bodyRect = document.body.getBoundingClientRect().top;
@@ -48,10 +68,17 @@ const Navbar = () => {
       const elementPosition = elementRect - bodyRect;
       const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      console.log(`[DEBUG] bodyRect.top: ${bodyRect}, elementRect.top: ${elementRect}`);
+      console.log(`[DEBUG] Calculated offsetPosition: ${offsetPosition}`);
+
+      if (open) {
+        setOpen(false);
+        setTimeout(() => {
+          performScroll(offsetPosition);
+        }, 100);
+      } else {
+        performScroll(offsetPosition);
+      }
       
       // Manually set active section for immediate feedback
       setActiveSection(id);
@@ -59,7 +86,14 @@ const Navbar = () => {
       // Fallback: standard scrollIntoView if element exists by selector
       const el = document.querySelector(href);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        if (open) {
+          setOpen(false);
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
         setActiveSection(id);
       }
     }
@@ -71,7 +105,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-card border-b py-3" : "py-5"
+        scrolled || open ? "glass-card border-b py-3" : "py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -130,7 +164,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-card border-t mt-2 overflow-hidden"
+            className="md:hidden border-t border-border/30 mt-3 overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {links.map((l) => (

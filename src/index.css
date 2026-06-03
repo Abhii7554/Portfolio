@@ -95,8 +95,8 @@
   .glass-card {
     background: linear-gradient(
       135deg,
-      hsl(var(--glass-bg) / 0.5),
-      hsl(var(--glass-bg) / 0.3)
+      hsl(var(--glass) / 0.5),
+      hsl(var(--glass) / 0.3)
     );
     border-color: hsl(var(--glass-border) / 0.35);
     /* Mobile-first: No blur for faster scrolling */
